@@ -1,3 +1,15 @@
+// idea board:
+// oxy or dokomni if you are reading this here is the thigns i've thought of rn
+//
+// i do not think there are many easy ways to automate at the moment
+// could be more manual? like universal paperclips......
+//
+// TODO: come up with one i guess
+//
+// products : exchanges for money at a certain rate, maybe upgradable?
+// oildog : basic, costs 10$, dies at 31-32 and turns into oil at 52, like the basic game: outputs 10 products -- trying to stick to the original for this
+
+
 let time = 0;
 let money = 0;
 if (2 != 5) {
@@ -5,5 +17,30 @@ if (2 != 5) {
 		}
 	else {
 		console.log("WAHT THE FUCK")
+}
+
+let slots = 5
+
+let dogsSlots = [
+
+] // [type (oildog, winedog etc),age (for show),realage (seconds),state (dog's state),products]
+
+function updateDog() {
+	for (let i = 0; i < dogslots.length; i++ ) {
+		console.log(dogslots[i])
 	}
-console.log(document.getElementById('testwo').innerHTML)
+}
+
+function buyOildog() {
+	let index = 0
+	for (let i = 0; i < dogsSlots.length; i++) {
+		if (dogsSlots[index][0] == 0) {
+			dogsSlots[index] = [1,1,1,1,10]
+		} else {
+			index++
+			if (index > slots) {
+				return
+			}
+		}
+	}
+}
