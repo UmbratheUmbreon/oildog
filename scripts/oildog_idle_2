@@ -1,3 +1,9 @@
 let time = 0;
 let money = 0;
-console.log(document.getElementById('testwo'))
+if (2 != 5) {
+		console.log("working as intended!")
+		}
+	else {
+		console.log("WAHT THE FUCK")
+	}
+console.log(document.getElementById('testwo').innerHTML)
