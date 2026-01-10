@@ -7,11 +7,6 @@
     <link href="/css/oildog.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body>
-    <div id="stats">
-        <h1 id="money">money: 0$</h1>
-        <h2 id="products">products: 0</h2> 
-        <button class="button" id="bigbuttontest" onclick="buyOildog()">BUTTON</button>
-    </div>
     <script src="scripts/oildog_idle_2.js"></script>
   </body>
 </html>
