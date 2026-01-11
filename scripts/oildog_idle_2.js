@@ -9,18 +9,13 @@ let Money = 0
 // load save
 
 
+// haha get the refrance
 
 if (2 != 5) {
 		console.log("script is running")
 	} else {
 		console.log("WAHT THE FUCK")
-} // haha get the reference
-
-// worth: how much money it sells for
-// accel: how fast it ages
-// income: passive income
-// lifespan: self-explanatory, dies when the lifespan is reached if dog is mortal, and also used to calculate when the dog "dies" and turns into oil.
-// mortal: if the dog is mortal
+}
 
 // upgrades?
 
@@ -31,6 +26,12 @@ let sellMult = 1
 let dogStore = {}
 
 // dog part classing bluh bluh
+
+// worth: how much money it sells for
+// accel: how fast it ages
+// income: passive income
+// lifespan: self-explanatory, dies when the lifespan is reached if dog is mortal, and also used to calculate when the dog "dies" and turns into oil.
+// mortal: if the dog is mortal
 
 class dogHead{
 	constructor(sellworth,accel,income,lifespan,cost,mortal){
