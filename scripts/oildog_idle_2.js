@@ -35,15 +35,16 @@ let dogStore = []
 // mortal: if the dog is mortal
 
 class dogHead{
-	constructor(sellworth,accel,income,lifespan,cost,mortal){
+	constructor(sellworth,accel,income,lifespan,cost,mortal,ageMult){
 		this.worth = sellworth*sellMult
 		this.accel = accel
 		this.income = income
 		this.cost = cost
 		this.lifespan = lifespan
 		this.mortal = mortal
+  this.ageMult = ageMult
 	}
-}
+} // basics
 
 function checkifanyistrue(v){
 	if (v === true){
@@ -60,17 +61,19 @@ class dog{
 		this.backLegs = hindlegs
 		this.tail = tail
 		this.soul = soul
-		this.realage = 1
-		this.fakeage = 1
+		this.realAge = 1
+		this.fakeAge = 1
 		this.mortal = false
 		this.value = head["worth"]+torso["worth"]+frontlegs["worth"]+hindlegs["worth"]+tail["worth"]
 		this.accel = head["accel"]*torso["accel"]*frontlegs["accel"]*hindlegs["accel"]*tail["accel"]
 		this.lifespan = head["lifespan"]+torso["lifespan"]+frontlegs["lifespan"]+hindlegs["lifespan"]+tail["lifespan"]
 		this.cost = head["cost"]+torso["cost"]+frontlegs["cost"]+hindlegs["cost"]+tail["cost"]
+this.ageMult = head["ageMult"]+torso["ageMult"]+frontlegs["ageMult"]+hindlegs["ageMult"]+tail["ageMult"]
 	}
 	update(){
-		this.fakeage = 2^this.realage
-		this.realage = this.realage+(this.realage*this.accel)
+		// this.fakeage = 2^this.realage
+  this.fakeAge = this.ageMult^this.fakeAge
+		this.realAge = this.realAge+(this.realage*this.accel)
 		document.getElementById("mainBody").textContent=frameCount;
 	}
 
