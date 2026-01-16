@@ -107,7 +107,7 @@ class dog{
 		} else {
 		this.fakeAge = truncateTime(Math.floor(this.realAge))
 		}
-		this.accel = this.realAge
+		// this.accel = this.realAge << REALLY exponential
 		this.realAge = this.realAge.plus(this.realAge.times(this.accel))
 		console.log(this.realAge)
 		document.getElementById("n1").textContent=this.fakeAge;
