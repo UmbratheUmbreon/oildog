@@ -4,7 +4,40 @@
 
 */
 
-let Money = 0
+// general functions
+function truncateTime(seconds){
+	let minutes = Math.floor(seconds /60)
+	let hours =   Math.floor(minutes /60)
+	let days =    Math.floor(hours   /24)
+	let years =   Math.floor(days    /365)
+	
+	seconds = seconds - (minutes*60)
+	minutes = minutes - (hours*60)
+	hours = hours - (days*24)
+	days = days - (years*365)
+
+	if (seconds<0){
+		seconds = 0
+	}
+	if (minutes<0){
+		minutes = 0
+	}
+	if (hours<0){
+		hours = 0
+	}
+	if (days<0){
+		days = 0
+	}
+	if (years<0){
+		years = 0
+	}
+
+return [seconds,minutes,hours,days,years]
+}
+
+console.log(truncateTime(500000))
+
+let Money = new Decimal(0)
 
 // load save
 
@@ -60,16 +93,27 @@ class dog{
 		this.backLegs = hindlegs
 		this.tail = tail
 		this.soul = soul
-		this.realAge = 1
-		this.fakeAge = 1
+		this.realAge = new Decimal(1)
+		this.fakeAge = [0,0,0,0,0]
 		this.mortal = false
+		this.accel = 1
 	};
 	update(){
-		// this.fakeage = 2^this.realage
-		this.realAge = this.realAge+(this.realage*this.accel)
-		document.getElementById("mainBody").textContent=frameCount;
+		let realYear = this.realAge.divideBy(31536000)
+		let mantissa = realYear["mantissa"]
+		let exponent = realYear["exponent"]
+		if (isNaN(truncateTime(Math.floor(this.realAge))[0])) {
+		this.fakeAge = ((Math.round(mantissa*100)/100).toString() + "e+" + (Math.round(exponent*100)/100).toString() + " years")
+		} else {
+		this.fakeAge = truncateTime(Math.floor(this.realAge))
+		}
+		this.accel = this.realAge
+		this.realAge = this.realAge.plus(this.realAge.times(this.accel))
+		console.log(this.realAge)
+		document.getElementById("n1").textContent=this.fakeAge;
 	}
-
+	sell(){
+	}
 }
 
 let oilHead = new dogHead(5,1,0,10,2,false,)
