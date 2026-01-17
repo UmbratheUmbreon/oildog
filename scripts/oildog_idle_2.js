@@ -33,7 +33,7 @@ function truncateTime(seconds){
 	}
 
 return [seconds,minutes,hours,days,years]
-}
+};
 
 console.log(truncateTime(500000))
 
@@ -97,6 +97,7 @@ class dog{
 		this.fakeAge = [0,0,0,0,0]
 		this.mortal = false
 		this.accel = 1
+		this.sellworth = 0
 	};
 	update(){
 		let realYear = this.realAge.divideBy(31536000)
@@ -123,20 +124,41 @@ class dog{
 			this.fakeAge = (seconds)
 		}
 		}
-		// this.accel = this.realAge // << REALLY exponential
+		// this.accel = this.realAge // << REALLY exponential (for testing)
 		this.realAge = this.realAge.plus(this.realAge.times(this.accel))
-		console.log(this.realAge)
 		document.getElementById("n1").textContent=this.fakeAge;
 		document.getElementById("n2").textContent=this.realAge;
 	}
 	sell(){
+		Money = Money + this.sellworth
+		dogStore.splice(dogStore.indexOf(this),1)
 	}
 }
 
-let oilHead = new dogHead(5,1,0,10,2,false,)
-let dognew = new dog(oilHead,oilHead,oilHead,oilHead,oilHead,oilHead)
-console.log(dognew)
-// head,torso,frontlegs,hindlegs,tail,soul,realage,fakeage,othervariables...
+// more functions blahblah
+
+function craftDog(head,torso,frontlegs,hindlegs,tail,soul){
+	dogStore = dogStore.concat(new dog(head,torso,frontlegs,hindlegs,tail,soul));
+	limbsStore.splice(limbsStore.indexOf(head),1)
+	limbsStore.splice(limbsStore.indexOf(torso),1)
+	limbsStore.splice(limbsStore.indexOf(frontlegs),1)
+	limbsStore.splice(limbsStore.indexOf(hindlegs),1)
+	limbsStore.splice(limbsStore.indexOf(tail),1)
+}
+
+/* debug
+function debug_oilHead(){
+let oilHead = new dogHead(5,1,0,10,2,false,);
+limbsStore = limbsStore.concat(oilHead)
+console.log(limbsStore)
+};
+function debug_dog(){
+craftDog(limbsStore[0],limbsStore[1],limbsStore[2],limbsStore[3],limbsStore[4],limbsStore[5])
+console.log(limbsStore)
+console.log(dogStore[0])
+console.log(dogStore)
+};
+*/
 
 let frameCount = 0;
 
@@ -145,7 +167,9 @@ async function updater()
 	while (true)
 	{
 		window.requestAnimationFrame(function(){
-			dognew.update();
+			for (i=0; i<dogStore.length; i++){
+			dogStore[i].update();
+			}
 		});
 		frameCount++;
 		await sleep(1000);
